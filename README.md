@@ -79,6 +79,17 @@ El JWT_SECRET se encuentra en la raiz del proyecto en el archivo .env
 Authorization: Bearer JWT_SECRET_TOKEN
 Content-Type: application/json
 Accept: application/json
+```
+Datos que se deben que pasar ejemplo
+```json
+{
+  "nombre": "Max",
+  "especie": "Gato",
+  "raza": "Siames",
+  "edad": 3,
+  "persona_id": 1
+}
+```
 
 ## License
 
