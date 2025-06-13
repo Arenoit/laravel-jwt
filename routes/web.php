@@ -59,12 +59,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('delete-persona/{id}', 'PersonasController@delete')->name('delete-persona');
 
 });
-/* Route::get('/personas', function () {
-    return view('users.personas');
-})->name('personas');
-Route::post('send-persona', 'PersonasController@create')->name('send-persona');
-Route::get('/edit-persona/{id}', function ($id) {
-    return view('users.edit-persona', compact('id'));
-})->name('edit-persona');
-Route::put('edit-1persona', 'PersonasController@edit')->name('edit-1persona');
-Route::delete('delete-persona/{id}', 'PersonasController@delete')->name('delete-persona'); */
+Route::get('/mascotas', function () {
+    return view('users.mascotas');
+})->name('mascotas');
+Route::post('send-mascota', 'MascotasController@create')->name('send-mascota');
+Route::get('/edit-mascota/{id}', function ($id) {
+    return view('users.edit-mascota', compact('id'));
+})->name('edit-mascota');
+Route::put('edit-1mascota', 'MascotasController@edit')->name('edit-1mascota');
+Route::delete('delete-mascota/{id}', 'MascotasController@delete')->name('delete-mascota');

@@ -4,11 +4,11 @@
         <div class="container">
             <!-- Page Header -->
             <div class="section-header">
-                <h2 class="title mb-2"><span class="text--base">Personas</span></h2>
+                <h2 class="title mb-2"><span class="text--base">Mascotas</span></h2>
             </div>
             <!-- End Page Header -->
 
-    <form class="js-validate" action="{{ route('send-persona') }}" method="post" enctype="multipart/form-data"
+    <form class="js-validate" action="{{ route('send-mascota') }}" method="post" enctype="multipart/form-data"
         id="form-id">
         @csrf
         <div class="card __card mb-3">
@@ -34,7 +34,7 @@
                                 </g>
                             </g>
                         </g>
-                    </svg> Crear nueva Persona
+                    </svg> Crear nueva Mascota
                 </h5>
             </div>
             <div class="card-body p-4">
@@ -44,28 +44,57 @@
                             <div class="form-group">
                                 <label class="input-label" for="nombre">Nombre</label>
                                 <input type="text" id="nombre" name="nombre" class="form-control __form-control"
-                                    placeholder="Nombre de la Persona" value="{{ old('nombre') }}" required>
+                                    placeholder="Nombre de la Mascota" value="{{ old('nombre') }}" required>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="mb-4">
                             <div class="form-group">
-                                <label class="input-label" for="email">Email</label>
-                                <input type="email" id="email" name="email" class="form-control __form-control"
-                                    placeholder="Correo electrónico" value="{{ old('email') }}" required>
+                                <label class="input-label" for="especie">Especie</label>
+                                <input type="text" id="especie" name="especie" class="form-control __form-control"
+                                    placeholder="Nombre de la Especie" value="{{ old('especie') }}" required>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="mb-4">
                             <div class="form-group">
-                                <label class="input-label" for="fecha_n">Fecha de nacimiento</label>
-                                <input type="date" id="fecha_n" name="fecha_n" class="form-control __form-control"
-                                    placeholder="Fecha de nacimiento" value="{{ old('fecha_n') }}" required>
+                                <label class="input-label" for="raza">Raza</label>
+                                <input type="text" id="raza" name="raza" class="form-control __form-control"
+                                    placeholder="Nombre de la Raza" value="{{ old('raza') }}" required>
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-6">
+                        <div class="mb-4">
+                            <div class="form-group">
+                                <label class="input-label" for="nombre">Edad</label>
+                                <input type="text" id="edad" name="edad" class="form-control __form-control"
+                                    placeholder="Edad de la Mascota" value="{{ old('edad') }}" required>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                        $personas=\App\Models\Personas::get();
+                    ?>
+                        <div class="form-group mb-4">
+                            <label class="input-label" for="persona_id">Persona</label>
+                            <select name="persona_id" id="persona_id" required
+                                class="form-control __form-control js-select2-custom js-example-basic-single"
+                                data-placeholder="Selecciona zona">
+                                <option value="" selected disabled>Selecciona la Persona</option>
+                                @foreach ($personas as $persona)
+                                    <option value="{{ $persona->id }}" {{ old('persona_id') == $persona->id ? 'selected' : '' }}>
+                                        {{ $persona->nombre }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
                 </div>
             </div>
         </div>
@@ -96,7 +125,7 @@
                                     </g>
                                 </g>
                             </g>
-                        </svg> Lista de las Personas
+                        </svg> Lista de las Mascotas
                     </h5>
                 </div>
                 <div class="card-header">
@@ -113,24 +142,26 @@
                                     <tr>
                                         <th class="border-0">Id</th>
                                         <th class="border-0">Nombre</th>
-                                        <th class="border-0">Email</th>
-                                        <th class="border-0">Fecha de naciemiento</th>
+                                        <th class="border-0">Especie</th>
+                                        <th class="border-0">Raza</th>
+                                        <th class="border-0">Edad</th>
+                                        <th class="border-0">Persona</th>
                                         <th class="text-center border-0">acción</th>
                                     </tr>
                                     </thead>
     <?php
-        $personas=\App\Models\Personas::get();
+        $mascotas=\App\Models\Mascotas::with('persona')->get();
     ?>
                                     <tbody id="set-rows">
                                     <!-- Incio foreach -->
-                                    @foreach ($personas as $persona)
+                                    @foreach ($mascotas as $mascota)
                                         <tr>
-                                            <td>{{ $persona->id }}</td>
+                                            <td>{{ $mascota->id }}</td>
                                             <td>
                                                 <div>
                                                     <a href="idddd" class="table-rest-info" alt="view store">
                                                         <div class="info"><div title="nombre de la tienda" class="text--title">
-                                                            {{ $persona->nombre }}
+                                                            {{ $mascota->nombre }}
                                                             </div>
                                                         </div>
                                                     </a>
@@ -140,7 +171,7 @@
                                                 <div>
                                                     <a href="idddd" class="table-rest-info" alt="view store">
                                                         <div class="info"><div title="nombre de la tienda" class="text--title">
-                                                            {{ $persona->email }}
+                                                            {{ $mascota->especie }}
                                                             </div>
                                                         </div>
                                                     </a>
@@ -150,7 +181,27 @@
                                                 <div>
                                                     <a href="idddd" class="table-rest-info" alt="view store">
                                                         <div class="info"><div title="nombre de la tienda" class="text--title">
-                                                            {{ $persona->fecha_de_nacimiento }}
+                                                            {{ $mascota->raza }}
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <a href="idddd" class="table-rest-info" alt="view store">
+                                                        <div class="info"><div title="nombre de la tienda" class="text--title">
+                                                            {{ $mascota->edad }}
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <a href="idddd" class="table-rest-info" alt="view store">
+                                                        <div class="info"><div title="nombre de la tienda" class="text--title">
+                                                            {{ $mascota->persona->nombre }}
                                                             </div>
                                                         </div>
                                                     </a>
@@ -160,14 +211,14 @@
                                             <td>
                                                 <div class="btn--container justify-content-center">
                                                     <a class="btn action-btn btn--primary btn-outline-primary"
-                                                    href="{{ route('edit-persona', $persona->id) }}" title="Editar Persona"><i class="tio-edit"></i>
+                                                    href="{{ route('edit-mascota', $mascota->id) }}" title="Editar Mascota"><i class="tio-edit"></i>
                                                     </a>
                                                     <a href="javascript:;" 
                                                         class="btn action-btn btn--danger btn-outline-danger"
                                                         data-toggle="modal"
                                                         data-target="#confirmDeleteModal"
-                                                        data-id="{{ $persona->id }}"
-                                                        title="Borrar Persona">
+                                                        data-id="{{ $mascota->id }}"
+                                                        title="Borrar Mascota">
                                                         <i class="tio-delete-outlined"></i>
                                                     </a>
                                                 </div>
@@ -221,7 +272,7 @@
                 var id = button.data('id'); // Extrae el ID
 
                 // Construye la ruta al backend para eliminar
-                var action = '{{ url("delete-persona") }}/' + id;
+                var action = '{{ url("delete-mascota") }}/' + id;
 
                 // Asigna la acción al formulario
                 $('#deleteForm').attr('action', action);
