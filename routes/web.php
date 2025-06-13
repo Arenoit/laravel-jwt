@@ -24,9 +24,6 @@ Route::get('/register', function () {
 })->name('register');
 Route::post('signin', 'AuthController@login')->name('signin');
 Route::post('signup', 'AuthController@register')->name('signup');
-Route::middleware('auth')->get('/dashboard', function () {
-    return view('users.dashboard', ['user' => auth()->user()]);
-})->name('dashboard');
 //Endpoint que sirve para ver los datos del usuario Logueado
 Route::middleware('auth')->get('/me', function () {
     return view('users.profile', ['user' => auth()->user()]);
@@ -38,3 +35,36 @@ Route::middleware('auth')->get('/me', function () {
         'email' => auth()->user()->email,
     ]);
 }); */
+Route::middleware('auth')->group(function () {
+
+    Route::get('/dashboard', function () {
+        return view('users.dashboard', ['user' => auth()->user()]);
+    })->name('dashboard');
+
+    Route::get('/personas', function () {
+        return view('users.personas', ['user' => auth()->user()]);
+    })->name('personas');
+
+    Route::post('send-persona', 'PersonasController@create')->name('send-persona');
+
+    Route::get('/edit-persona/{id}', function ($id) {
+        return view('users.edit-persona', array_merge(
+            compact('id'),
+            ['user' => auth()->user()]
+        ));
+    })->name('edit-persona');
+
+    Route::put('edit-1persona', 'PersonasController@edit')->name('edit-1persona');
+
+    Route::delete('delete-persona/{id}', 'PersonasController@delete')->name('delete-persona');
+
+});
+/* Route::get('/personas', function () {
+    return view('users.personas');
+})->name('personas');
+Route::post('send-persona', 'PersonasController@create')->name('send-persona');
+Route::get('/edit-persona/{id}', function ($id) {
+    return view('users.edit-persona', compact('id'));
+})->name('edit-persona');
+Route::put('edit-1persona', 'PersonasController@edit')->name('edit-1persona');
+Route::delete('delete-persona/{id}', 'PersonasController@delete')->name('delete-persona'); */

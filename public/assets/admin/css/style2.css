@@ -1,0 +1,99 @@
+#videofondo{
+    position:fixed;
+    top:0;
+    left:0;
+    min-width:100%;
+    min-height:100vh;
+    z-index: -1;
+    background-color: rgb(51, 81, 146);
+}
+.imagenfondo{
+    background:url('../images/cambio\ img.jpg') no-repeat;
+    background-size: cover;
+    border-style: hidden;
+}
+.fondoinicio{
+    background:url('./images/c39eeb33963d50a4895988359557cbf9.jpg') no-repeat;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    border-style: hidden;
+}
+/* .hoja{
+    width: 74%;
+    height: 1938.44px;
+    margin: 0 auto;
+    padding: 50px;
+    margin-top: 50px;
+    padding-top: 20px;
+    background-color: blanchedalmond;
+    border-style: hidden;
+} */
+@font-face {
+    font-family: Koldby-DEMO;
+    src: url(Koldby-DEMO.otf);
+}
+h1{
+    font-family: 'Times New Roman';
+}
+h2{
+    font-family: 'Times New Roman';
+    font-size: 9mm;
+    color: brown;
+    margin-bottom: -15px;
+}
+h3{
+    font-family: 'Times New Roman';
+    font-size: 7mm;
+}
+h4{
+    font-family: 'Times New Roman';
+    color: rgb(173, 28, 57);
+    margin-bottom: -15px;
+    font-size: 7mm;
+}
+p{
+    font-family: 'Times New Roman';
+}
+.volver{
+    font-family: 'helvetica neue', helvetica, sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  border: 2px solid rgba(0,0,200,0.6);
+  background: rgba(0,0,200,0.3);
+  color: rgba(0,0,200,0.6);
+  box-shadow: 1px 1px 2px rgba(0,0,200,0.4);
+  border-radius: 10px;
+  padding: 3px 10px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.contenedorVerde{
+    background-color: rgba(25, 139, 15, 0.568);
+}
+.contenedorAmarillo{
+    background-color: rgba(218, 205, 25, 0.904);
+}
+.contenedorGris{
+    background-color: rgba(49, 49, 43, 0.904);
+}
+.contenedorSalmon{
+    background-color: rgb(250, 127, 114);
+}
+.contenedorCeleste{
+    background-color: rgba(25, 138, 190, 0.808);
+}
+.contenedorVerdeOscuro{
+    background-color: rgba(13, 77, 0, 0.808);
+}
+.contenedorCafe{
+    background-color: rgba(175, 85, 20, 0.959);
+}
+.contenedorGrisClaro{
+    background-color: rgba(105, 105, 105, 0.445);
+}
+.contenedorRojo{
+    background-color: rgb(255, 0, 0);
+}

@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Provinces extends Model
+class Personas extends Model
 {
-    protected $table = 'provincias';
+    protected $table = 'personas';
     public $timestamps = false;
     protected $fillable = [
-        'cod',
         'nombre',
+        'email',
+        'fecha_de_nacimiento',
     ];
 }
