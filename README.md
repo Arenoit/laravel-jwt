@@ -34,6 +34,7 @@ Extenciones que deben estar habilitadas el Laravel
 
 # Base de datos
 Crear la base de datos gublin en MySQL 8.4.0 (Recomendable), caso contrario en el que quieran crear con otro nombre la base de datos editar .env en el archivo raiz
+
 Usar este comando para migrar las tablas
 ```bash
 php artisan migrate
@@ -43,6 +44,12 @@ Para que se que los datos de las tablas predefinidos se inserten usar estos 2 co
 composer dump-autoload
 php artisan migrate:fresh --seed
 ```
+Usuario de prueba para iniciar sesión
+```json
+Correo: davidrylacer@gmail.com
+Constraseña: 123
+```
+
 # Consideraciones
 JWT funciona mejor en routes/web.php porque maneja las sessiones de usuario y solo necesitara autentificar una vez, en cambio en una API solo adentro del Controllador toca verificar a cada momento porque tiene un tiempo en que se caduca el token
 
