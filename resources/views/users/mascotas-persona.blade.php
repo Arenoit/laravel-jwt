@@ -111,7 +111,7 @@
                                             <td>
                                                 <div>
                                                     <a href="idddd" class="table-rest-info" alt="view store">
-                                                        <div class="info"><div title="nombre de la tienda" class="text--title" style="display:flex">
+                                                        <div class="info"><div title="nombre de la tienda" class="text--title">
                                                             {{ $mascota->persona->nombre }}
                                                         </div>
                                                     </a>

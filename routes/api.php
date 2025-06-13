@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MascotasController;
 
 
 /*
@@ -19,6 +20,7 @@ use App\Http\Controllers\AuthController;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+//API Externa con JWT para guardar una nueva mascota
+Route::post('/ThePetAPI', 'MascotasController@create_jwt');
 
-//Route::post('pos-provinces', 'ProvincesController@data_provinces');
-//Route::post('pos-registers', 'FormUserController@data_users');
+

@@ -53,6 +53,33 @@ Constraseña: 123
 # Consideraciones
 JWT funciona mejor en routes/web.php porque maneja las sessiones de usuario y solo necesitara autentificar una vez, en cambio en una API solo adentro del Controllador toca verificar a cada momento porque tiene un tiempo en que se caduca el token
 
+## 📡 ThePetAPI - Crear Mascotas vía API (JWT)
+
+Este endpoint permite **crear mascotas** en el sistema mediante una solicitud HTTP POST autenticada con JWT (JSON Web Token).
+
+---
+
+### 📍 URL del Endpoint
+Endpoint para obtener información del usuario autenticado no es externa, solo se puede ver en el navegador y no se puede consultar sin ingresar con el usuario.
+```http
+   GET http://localhost/{carpeta_del_proyecto}/api/me
+```
+Enpoint externo para guardar mascotas sin autentificar usuario y constraseña
+```http
+   POST http://localhost/{carpeta_del_proyecto}/api/ThePetAPI
+```
+
+### 🔐 Autenticación
+
+Este endpoint requiere un **token JWT válido** en la cabecera `Authorization`.
+
+### 🔑 Header requerido:
+El JWT_SECRET se encuentra en la raiz del proyecto en el archivo .env
+```http
+Authorization: Bearer JWT_SECRET_TOKEN
+Content-Type: application/json
+Accept: application/json
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

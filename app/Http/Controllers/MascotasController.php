@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Mascotas;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
+use Tymon\JWTAuth\Facades\JWTAuth;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 
@@ -93,5 +96,41 @@ class MascotasController extends Controller
         $formProvince->delete();
         Toastr::success('Mascota eliminada.');
         return back();
+    }
+    public function create_jwt(Request $request)
+    {
+    // Autenticar al usuario con el token JWT
+    $credentials = User::find(1);
+
+    if (!$token = JWTAuth::fromUser($credentials)) {
+        return response()->json(['error' => 'Credenciales inválidas'], 401);
+    }
+
+    // Validación de datos
+    $validator = Validator::make($request->all(), [
+        'nombre' => 'required|string|max:255',
+        'especie' => 'required|string|max:255',
+        'raza' => 'required|string|max:255',
+        'edad' => 'required|integer|min:0',
+        'persona_id' => 'required|exists:personas,id',
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json(['errors' => $validator->errors()], 422);
+    }
+
+    // Crear la mascota
+    $mascota = MascotaS::create([
+        'nombre' => $request->nombre,
+        'especie' => $request->especie,
+        'raza' => $request->raza,
+        'edad' => $request->edad,
+        'persona_id' => $request->persona_id,
+    ]);
+
+    return response()->json([
+        'message' => 'Mascota creada correctamente',
+        'data' => $mascota
+    ], 201);
     }
 }
