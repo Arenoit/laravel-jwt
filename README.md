@@ -33,6 +33,7 @@ Extenciones que deben estar habilitadas el Laravel
 - pdo_sqlite
 
 # Base de datos
+Crear la base de datos gublin en MySQL 8.4.0 (Recomendable), caso contrario en el que quieran crear con otro nombre la base de datos editar .env en el archivo raiz
 Usar este comando para migrar las tablas
 ```bash
 php artisan migrate
