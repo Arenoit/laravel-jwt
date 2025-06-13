@@ -198,7 +198,7 @@
                                                     <a href="idddd" class="table-rest-info" alt="view store">
                                                         <div class="info"><div title="nombre de la tienda" class="text--title" style="display:flex">
                                                             {{ $mascota->persona->nombre }}&nbsp;<a class="btn action-btn btn-warning btn-outline-primary"
-                                                            href="{{ route('mascotas-persona', $mascota->id) }}" title="Todas las mascotas"><i class="tio-visible-outlined"></i>
+                                                            href="{{ route('mascotas-persona', $persona->id) }}" title="Todas las mascotas"><i class="tio-visible-outlined"></i>
                                                             </a>
                                                         </div>
                                                     </a>

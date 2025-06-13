@@ -159,6 +159,9 @@
     
                                             <td>
                                                 <div class="btn--container justify-content-center">
+                                                    <a class="btn action-btn btn-warning btn-outline-primary"
+                                                        href="{{ route('mascotas-persona', $persona->id) }}" title="Todas las mascotas"><i class="tio-visible-outlined"></i>
+                                                    </a>
                                                     <a class="btn action-btn btn--primary btn-outline-primary"
                                                     href="{{ route('edit-persona', $persona->id) }}" title="Editar Persona"><i class="tio-edit"></i>
                                                     </a>
