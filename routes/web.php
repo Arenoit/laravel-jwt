@@ -24,17 +24,18 @@ Route::get('/register', function () {
 })->name('register');
 Route::post('signin', 'AuthController@login')->name('signin');
 Route::post('signup', 'AuthController@register')->name('signup');
-//Endpoint que sirve para ver los datos del usuario Logueado
+//**Endpoint que sirve para ver los datos del usuario Logueado
 Route::middleware('auth')->get('/me', function () {
     return view('users.profile', ['user' => auth()->user()]);
 });
-// Solo se puede acceder al token JWT por web.php al manejar las sessiones de usuario
-/* Route::middleware('auth')->get('/api/me', function (Request $request) {
+// Enpoint modo API solo se puede acceder al token JWT por web.php al manejar las sessiones de usuario
+Route::middleware('auth')->get('/api/me', function (Request $request) {
     return response()->json([
         'name' => auth()->user()->name,
         'email' => auth()->user()->email,
     ]);
-}); */
+});
+// Rutas protegidas con Millaware
 Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard', function () {
@@ -68,3 +69,6 @@ Route::get('/edit-mascota/{id}', function ($id) {
 })->name('edit-mascota');
 Route::put('edit-1mascota', 'MascotasController@edit')->name('edit-1mascota');
 Route::delete('delete-mascota/{id}', 'MascotasController@delete')->name('delete-mascota');
+Route::get('/mascotas-persona/{id}', function ($id) {
+    return view('users.mascotas-persona', compact('id'));
+})->name('mascotas-persona');
